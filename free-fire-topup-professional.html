@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARD MARKET — Free Fire Top Up</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#050608;color:#f5f5f5;font-family:Arial,Helvetica,sans-serif}
+:root{--orange:#ffae00;--green:#00e6a1;--panel:#111318;--panel2:#0b0d11;--border:#292d35}
+.wrap{max-width:760px;margin:auto;background:linear-gradient(180deg,#101217,#08090c);min-height:100vh;border-left:1px solid #1d2026;border-right:1px solid #1d2026}
+.ticker{height:34px;background:#17191e;border-bottom:1px solid #363a42;display:flex;align-items:center;gap:18px;padding:0 14px;font-size:10px;font-weight:800;letter-spacing:.4px;overflow:hidden;white-space:nowrap}
+.ticker b{background:var(--orange);color:#111;padding:5px 8px;border-radius:5px}
+.green{color:var(--green)}
+.nav{height:72px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #22252c}
+.brand{display:flex;align-items:center;gap:10px}.logo{width:38px;height:38px;border-radius:11px;background:var(--orange);color:#111;display:grid;place-items:center;font-weight:1000}
+.brand strong{font-size:17px;font-style:italic}.brand strong span{color:var(--orange)}
+.server{font-size:8px;color:var(--green);margin-top:3px;font-weight:800}
+.actions{display:flex;gap:8px}.action{border:1px solid #393d46;background:#15171c;color:#ddd;border-radius:9px;padding:10px 12px;font-weight:800}
+main{padding:18px 14px 70px}
+.badge{display:inline-block;color:var(--orange);border:1px solid #77500a;background:#221805;padding:7px 11px;border-radius:20px;font-size:10px;font-weight:900}
+h1{font-size:32px;line-height:1;margin:14px 0 10px;font-style:italic;text-transform:uppercase}
+h1 span{color:var(--orange)}.sub{color:#9da3ae;font-size:12px;line-height:1.6}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+.feature{border:1px solid #60460e;background:#12151a;border-radius:12px;padding:14px 9px;text-align:center;font-size:10px;font-weight:900}
+.feature i{display:block;font-size:19px;margin-bottom:7px;color:var(--orange)}
+.count{border:1px solid var(--border);background:#15171c;border-radius:14px;padding:13px;margin:12px 0 18px}
+.counthead{display:flex;justify-content:space-between;font-size:10px;font-weight:900;margin-bottom:10px}
+.clock{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.time{background:#080a0d;border-radius:8px;text-align:center;padding:12px}.time b{font-size:20px;color:var(--orange)}.time small{display:block;color:#6d727c;font-size:7px;margin-top:3px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:14px;margin:12px 0}
+.section-title{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:1000;text-transform:uppercase}
+.num{width:22px;height:22px;border-radius:7px;background:var(--orange);color:#111;display:grid;place-items:center;font-size:11px}
+.field{margin-top:13px}.field label{display:block;font-size:9px;color:#aeb4bf;font-weight:900;margin-bottom:7px}
+.inputrow{display:flex;gap:7px}.input{flex:1;background:#080a0e;border:1px solid #30343c;color:white;border-radius:9px;padding:13px;outline:none}.btn{background:var(--orange);color:#111;border:0;border-radius:9px;padding:0 17px;font-weight:1000;cursor:pointer}.btn:hover{filter:brightness(1.08)}
+.packs{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:13px}
+.pack{position:relative;background:#0b0d11;border:1px solid #292d35;border-radius:12px;padding:12px;cursor:pointer;transition:.15s}
+.pack:hover,.pack.active{border-color:var(--orange);transform:translateY(-1px)}
+.pack .tag{position:absolute;right:8px;top:8px;background:var(--orange);color:#111;border-radius:10px;padding:4px 6px;font-size:7px;font-weight:1000}
+.diamond{font-size:22px}.pack h3{font-size:12px;margin:8px 0}.total{font-size:16px;color:var(--orange);font-weight:1000}.bonus{color:var(--green);font-size:8px}.price{margin-top:10px;font-weight:1000}.select{float:right;background:#20232a;color:#ddd;border:0;border-radius:5px;padding:5px 8px;font-size:8px}
+.notice{background:#15181e;border:1px solid #2a2e36;border-radius:10px;padding:11px;color:#9ca2ad;font-size:9px;line-height:1.5;margin-top:12px}
+.order{display:flex;justify-content:space-between;align-items:center;gap:10px}.summary{font-size:11px;color:#aeb4bf}.summary b{display:block;color:#fff;font-size:18px;margin-top:3px}
+.full{width:100%;padding:14px;margin-top:12px}
+.payment-help{display:flex;align-items:center;gap:12px;margin-top:12px;padding:14px;border:1px solid #8a5c0a;border-radius:12px;background:linear-gradient(135deg,#241905,#15171c);box-shadow:0 0 18px rgba(255,174,0,.08)}
+.payment-help .help-icon{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border-radius:10px;background:#ffae00;color:#111;font-size:20px}
+.payment-help strong{display:block;color:#ffae00;font-size:12px;letter-spacing:.3px}
+.payment-help p{margin:4px 0 6px;color:#d7dbe2;font-size:10px;line-height:1.45}
+.payment-help a{color:#fff;text-decoration:none;font-size:16px;font-weight:1000;letter-spacing:.5px}
+.payment-help span{color:#00e6a1;font-size:8px;font-weight:900}
+.support{position:fixed;right:22px;bottom:22px;background:var(--orange);color:#111;border:0;border-radius:25px;padding:13px 18px;font-weight:1000;box-shadow:0 8px 25px #0008}
+footer{border-top:1px solid #24272d;color:#777f8b;font-size:9px;text-align:center;padding:22px 14px}
+
+.uid-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.78);backdrop-filter:blur(7px);z-index:9999}
+.uid-modal.show{display:flex}
+.uid-box{width:min(100%,385px);background:linear-gradient(145deg,#111a20,#171313);border:1px solid #008f78;border-radius:17px;padding:22px 20px 20px;box-shadow:0 0 45px rgba(0,230,161,.12),0 18px 60px #000}
+.uid-avatar{width:64px;height:64px;margin:0 auto 15px;border:2px solid #ffae00;border-radius:16px;background:#fff;color:#111;display:grid;place-items:center;font-size:35px;box-shadow:0 0 20px rgba(255,174,0,.18)}
+.uid-status{width:max-content;margin:auto;padding:6px 11px;border:1px solid #006f5e;background:#092d29;border-radius:20px;color:#00e6a1;font-size:9px;font-weight:1000;letter-spacing:.7px}
+.uid-box h2{text-align:center;font-size:16px;margin:13px 0 7px}
+.uid-desc{text-align:center;color:#969da8;font-size:10px;margin:0 0 17px}
+.uid-info{border:1px solid #272b31;border-radius:12px;overflow:hidden;background:#07090c}
+.uid-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border-bottom:1px solid #1d2025;font-size:10px}
+.uid-row:last-child{border-bottom:0}
+.uid-label{color:#9da3ad}.uid-value{font-weight:900;text-align:right;color:#f2f3f5}
+.uid-value.gold{color:#ffae00}.uid-value.green{color:#00e6a1}
+.uid-confirm{width:100%;margin-top:18px;padding:14px;border:0;border-radius:12px;background:#ffae00;color:#111;font-weight:1000;letter-spacing:.6px;cursor:pointer}
+.uid-confirm:hover{filter:brightness(1.08)}
+.uid-close{display:block;margin:11px auto 0;border:0;background:none;color:#777f89;font-size:9px;cursor:pointer}
+
+@media(max-width:520px){h1{font-size:27px}.features{grid-template-columns:1fr}.packs{grid-template-columns:1fr}.wrap{border:0}.support{right:14px}}
+
+.payment-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);z-index:10000}
+.payment-modal.show{display:flex}
+.payment-box{width:min(100%,390px);background:linear-gradient(145deg,#11151b,#0a0c10);border:1px solid #ffae00;border-radius:18px;padding:22px;box-shadow:0 20px 70px #000,0 0 35px rgba(255,174,0,.12)}
+.payment-icon{width:58px;height:58px;margin:0 auto 12px;border-radius:16px;background:#ffae00;color:#111;display:grid;place-items:center;font-size:28px}
+.payment-status{width:max-content;margin:auto;padding:6px 11px;border-radius:20px;border:1px solid #006f5e;background:#092d29;color:#00e6a1;font-size:9px;font-weight:1000;letter-spacing:.5px}
+.payment-box h2{text-align:center;margin:13px 0 6px;font-size:18px}
+.payment-box .pay-sub{text-align:center;color:#9da3ad;font-size:10px;line-height:1.5;margin:0 0 16px}
+.pay-card{background:#07090c;border:1px solid #292d35;border-radius:12px;padding:13px}
+.pay-row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #1d2025;font-size:10px}
+.pay-row:last-child{border-bottom:0}
+.pay-label{color:#9da3ad}.pay-value{color:#fff;font-weight:900;text-align:right}
+.pay-value.gold{color:#ffae00}
+.pay-instruction{margin-top:13px;padding:12px;border-radius:10px;background:#201804;border:1px solid #60460e;color:#e7e9ed;font-size:10px;line-height:1.55}
+.pay-instruction b{color:#ffae00}
+.pay-number{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.pay-number a{color:#fff;text-decoration:none;font-size:18px;font-weight:1000;letter-spacing:.6px}
+.copy-pay{background:#00e6a1;color:#07100d;border:0;border-radius:8px;padding:7px 9px;font-size:8px;font-weight:1000;cursor:pointer}
+.payment-ok{width:100%;margin-top:15px;padding:13px;border:0;border-radius:11px;background:#ffae00;color:#111;font-weight:1000;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="ticker"><b>⚡ FLASH DROP</b><span>CHEAP DIAMOND TOP-UP</span><span class="green">● 100% INSTANT UID CREDIT</span></div>
+  <header class="nav">
+    <div class="brand">
+      <div class="logo">CM</div>
+      <div><strong>CARD <span>MARKET</span></strong><div class="server">● SERVER ACTIVE</div></div>
+    </div>
+    <div class="actions"><button class="action">⌕</button><button class="action">৳ BDT</button></div>
+  </header>
+
+  <main>
+    <span class="badge">● 🔥 TOP-UP CARNIVAL</span>
+    <h1>REFUEL YOUR <span>DIAMOND</span> VAULT</h1>
+    <div class="sub">Fast digital top-up by numeric UID. No password required. Select your package and continue to checkout.</div>
+
+    <div class="features">
+      <div class="feature"><i>⚡</i>FAST DELIVERY</div>
+      <div class="feature"><i>🛡</i>NO PASSWORD</div>
+      <div class="feature"><i>★</i>TRUSTED SERVICE</div>
+    </div>
+
+    <div class="count">
+      <div class="counthead"><span>◉ FLASH DROP ENDS IN:</span><span class="green">Active Now</span></div>
+      <div class="clock"><div class="time"><b id="hh">05</b><small>HOURS</small></div><div class="time"><b id="mm">59</b><small>MINS</small></div><div class="time"><b id="ss">08</b><small>SECS</small></div></div>
+    </div>
+
+    <section class="card">
+      <div class="section-title"><span class="num">1</span> ENTER PLAYER ID (UID)</div>
+      <div class="field"><label>FREE FIRE NUMERIC UID *</label>
+        <div class="inputrow"><input id="uid" class="input" inputmode="numeric" placeholder="e.g. 123456789"><button class="btn" onclick="verifyUID()">VERIFY</button></div>
+      </div>
+      <div id="uidMsg" class="notice" style="display:none"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><span class="num">2</span> CHOOSE DIAMOND PACK</div>
+      <div class="packs">
+        <div class="pack" data-name="3100 + 310 Diamonds" data-price="349" onclick="choose(this)"><span class="tag">STARTER PACK</span><div class="diamond">💎</div><h3>3,100 + 310 Diamonds</h3><div class="total">3,410 💎 <span class="bonus">+310 Bonus</span></div><div class="price">৳349 <button class="select">SELECT</button></div></div>
+        <div class="pack" data-name="6800 + 680 Diamonds" data-price="799" onclick="choose(this)"><span class="tag">+10% BONUS</span><div class="diamond">💎</div><h3>6,800 + 680 Diamonds</h3><div class="total">7,480 💎 <span class="bonus">+680 Bonus</span></div><div class="price">৳799 <button class="select">SELECT</button></div></div>
+        <div class="pack" data-name="12000 + 1500 Diamonds" data-price="1299" onclick="choose(this)"><span class="tag">MOST POPULAR</span><div class="diamond">💎</div><h3>12,000 + 1,500 Diamonds</h3><div class="total">13,500 💎 <span class="bonus">+1,500 Bonus</span></div><div class="price">৳1,299 <button class="select">SELECT</button></div></div>
+        <div class="pack" data-name="18000 + 2700 Diamonds" data-price="1799" onclick="choose(this)"><span class="tag">BEST VALUE</span><div class="diamond">💎</div><h3>18,000 + 2,700 Diamonds</h3><div class="total">20,700 💎 <span class="bonus">+2,700 Bonus</span></div><div class="price">৳1,799 <button class="select">SELECT</button></div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><span class="num">3</span> ORDER SUMMARY</div>
+      <div class="order"><div class="summary">Selected package<b id="chosen">None</b></div><div class="summary">TOTAL<b id="total">৳0</b></div></div>
+      <button class="btn full" onclick="checkout()">CONTINUE TO CHECKOUT →</button>
+      <div class="payment-help">
+  <div class="help-icon">💳</div>
+  <div>
+    <strong>PAYMENT-এ কোনো সমস্যা হচ্ছে?</strong>
+    <p>Payment করতে সমস্যা হলে দেরি না করে আমাদের <b>Inbox</b> করুন।</p>
+    <a href="tel:01603743894">📞 01603743894</a>
+    <span> • CARD MARKET SUPPORT</span>
+  </div>
+</div>
+    </section>
+  </main>
+  <footer>© 2026 CARD MARKET · Digital Top-Up Store · Terms · Privacy · Support</footer>
+</div>
+
+<div id="uidModal" class="uid-modal" role="dialog" aria-modal="true" aria-labelledby="uidTitle">
+  <div class="uid-box">
+    <div class="uid-avatar">👤</div>
+    <div class="uid-status">✓ PLAYER UID VERIFIED</div>
+    <h2 id="uidTitle">FREE FIRE ACCOUNT READY</h2>
+    <p class="uid-desc">Your Player UID has been validated successfully.</p>
+    <div class="uid-info">
+      <div class="uid-row"><span class="uid-label">👤 Player UID</span><span id="modalUID" class="uid-value gold">—</span></div>
+      <div class="uid-row"><span class="uid-label">🌐 Region / Server</span><span class="uid-value green">Free Fire Global</span></div>
+      <div class="uid-row"><span class="uid-label">🔐 Password</span><span class="uid-value green">NOT REQUIRED</span></div>
+    </div>
+    <button class="uid-confirm" onclick="confirmUID()">CONFIRM &amp; CHOOSE DIAMONDS &nbsp; →</button>
+    <button class="uid-close" onclick="closeUID()">CANCEL</button>
+  </div>
+</div>
+
+
+<div id="paymentModal" class="payment-modal" role="dialog" aria-modal="true">
+  <div class="payment-box">
+    <div class="payment-icon">💳</div>
+    <div class="payment-status">✓ PAYMENT INSTRUCTION</div>
+    <h2>Complete Your Payment</h2>
+    <p class="pay-sub">নিচের bKash Personal নম্বরে Send Money করুন।</p>
+    <div class="pay-card">
+      <div class="pay-row"><span class="pay-label">💎 Package</span><span id="payPackage" class="pay-value">—</span></div>
+      <div class="pay-row"><span class="pay-label">👤 Player UID</span><span id="payUID" class="pay-value">—</span></div>
+      <div class="pay-row"><span class="pay-label">💰 Total</span><span id="payTotal" class="pay-value gold">৳0</span></div>
+    </div>
+    <div class="pay-instruction">
+      <b>📌 Payment Method</b><br>
+      bKash Personal → <b>Send Money</b><br>
+      Payment করার পর <b>৫ মিনিট অপেক্ষা করুন</b>।
+      <div class="pay-number">
+        <a href="tel:01603743894">📞 01603743894</a>
+        <button class="copy-pay" onclick="copyPaymentNumber()">COPY</button>
+      </div>
+    </div>
+    <button class="payment-ok" onclick="closePayment()">✓ OK, I UNDERSTAND</button>
+  </div>
+</div>
+
+<button class="support" onclick="alert('Support: connect this button to your WhatsApp/Facebook support channel.')">💬 SUPPORT</button>
+
+<script>
+let selected=null;
+function choose(el){
+ document.querySelectorAll('.pack').forEach(x=>x.classList.remove('active'));
+ el.classList.add('active'); selected=el;
+ document.getElementById('chosen').textContent=el.dataset.name;
+ document.getElementById('total').textContent='৳'+Number(el.dataset.price).toLocaleString();
+}
+function verifyUID(){
+ const uid=document.getElementById('uid').value.trim();
+ const msg=document.getElementById('uidMsg');
+ msg.style.display='block';
+ if(!/^\d{6,15}$/.test(uid)){
+   msg.textContent='Please enter a valid numeric UID (6–15 digits).';
+   return;
+ }
+ document.getElementById('modalUID').textContent=uid;
+ document.getElementById('uidModal').classList.add('show');
+}
+function closeUID(){document.getElementById('uidModal').classList.remove('show')}
+function confirmUID(){closeUID();document.querySelector('.packs').scrollIntoView({behavior:'smooth',block:'center'})}
+function checkout(){
+ const uid=document.getElementById('uid').value.trim();
+ if(!/^\d{6,15}$/.test(uid)){alert('Please enter a valid Player UID first.');return}
+ if(!selected){alert('Please select a diamond package.');return}
+ document.getElementById('payPackage').textContent=selected.dataset.name;
+ document.getElementById('payUID').textContent=uid;
+ document.getElementById('payTotal').textContent='৳'+Number(selected.dataset.price).toLocaleString();
+ document.getElementById('paymentModal').classList.add('show');
+}
+
+document.getElementById('uidModal').addEventListener('click',function(e){if(e.target===this)closeUID()});
+let end=Date.now()+5*3600*1000+59*60000+8*1000;
+setInterval(()=>{let t=Math.max(0,end-Date.now());let s=Math.floor(t/1000);let h=Math.floor(s/3600);s%=3600;let m=Math.floor(s/60);s%=60;hh.textContent=String(h).padStart(2,'0');mm.textContent=String(m).padStart(2,'0');ss.textContent=String(s).padStart(2,'0')},1000);
+
+function closePayment(){document.getElementById('paymentModal').classList.remove('show')}
+function copyPaymentNumber(){
+  navigator.clipboard.writeText('01603743894').then(()=>{
+    const b=document.querySelector('.copy-pay');
+    b.textContent='COPIED ✓';
+    setTimeout(()=>b.textContent='COPY',2000);
+  }).catch(()=>alert('bKash Personal: 01603743894'));
+}
+document.getElementById('paymentModal').addEventListener('click',function(e){if(e.target===this)closePayment()});
+</script>
+</body>
+</html>
